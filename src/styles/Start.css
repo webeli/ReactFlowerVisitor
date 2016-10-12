@@ -1,0 +1,7 @@
+.well {
+    background-image:linear-gradient(to bottom, #fff 0%, #f8f8f8 100%)!important;
+}
+.center-text {
+    text-align:center!important;
+    margin-bottom:20px;
+}

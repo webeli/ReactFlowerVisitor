@@ -2,8 +2,7 @@
  * The geosuggest module
  */
 .geosuggest {
-    font-size: 18px;
-    font-size: 1rem;
+    font-size: 15px;
     position: relative;
     width: 50%;
     margin: 1em auto;
@@ -49,8 +48,7 @@
  * A geosuggest item
  */
 .geosuggest__item {
-    font-size: 18px;
-    font-size: 1rem;
+    font-size: 15px;
     padding: .5em .65em;
     cursor: pointer;
 }
