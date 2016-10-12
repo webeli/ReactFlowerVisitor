@@ -10,11 +10,11 @@ import './styles/index.css';
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyBeThZ8uvX1LcLq3rCyKhPRCBsS8Aa8Ud4",
-    authDomain: "editor-8d808.firebaseapp.com",
-    databaseURL: "https://editor-8d808.firebaseio.com",
-    storageBucket: "editor-8d808.appspot.com",
-    messagingSenderId: "95238276998"
+    apiKey: "AIzaSyCm577yx4uU0TW5g_uFQH3wg_fUjAHUp88",
+    authDomain: "flowerpower-c349a.firebaseapp.com",
+    databaseURL: "https://flowerpower-c349a.firebaseio.com",
+    storageBucket: "",
+    messagingSenderId: "29712322543"
 };
 firebase.initializeApp(config);
 
