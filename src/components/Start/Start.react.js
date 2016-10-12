@@ -35,7 +35,7 @@ class Start extends Component {
                         </Nav>
                         <Nav pullRight>
                             <NavItem eventKey={2} href="#">Nyheter</NavItem>
-                            <NavItem eventKey={2} href="#">Hjälp</NavItem>
+                            <NavItem eventKey={2} href="#">Vanliga frågor</NavItem>
                             <NavItem eventKey={1} href="#">Logga in (Florister)</NavItem>
                         </Nav>
                     </Navbar.Collapse>
@@ -45,7 +45,7 @@ class Start extends Component {
                     <Well>
                         <h3 className="center-text">Ange leveransadress</h3>
                         <Geosuggest
-                            placeholder="Skicka till adress"
+                            placeholder="Leveransadress"
                             fixtures={fixtures}
                             country="se"
                             onSuggestSelect={this.onSuggestSelect}/>
