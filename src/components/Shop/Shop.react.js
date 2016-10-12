@@ -1,15 +1,33 @@
 import React, { Component } from 'react';
 
-import { Navbar, Nav, NavItem, Col, Thumbnail, Button } from 'react-bootstrap';
-
-import products from '../../../mockup/mockup';
+import { Navbar, Nav, NavItem, Col, Thumbnail, Button, Checkbox } from 'react-bootstrap';
 
 class Shop extends Component {
-    render() {
 
+    render() {
+        const products = [
+            {title: 'Blomma 1', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
+            {title: 'Blomma 2', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
+            {title: 'Blomma 3', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
+            {title: 'Blomma 4', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
+            {title: 'Blomma 5', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
+            {title: 'Blomma 6', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
+            {title: 'Blomma 7', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
+            {title: 'Blomma 8', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' }
+        ];
+        const menus = [
+            {title: 'Menu 1' },
+            {title: 'Menu 2' },
+            {title: 'Menu 3' },
+            {title: 'Menu 4' },
+            {title: 'Menu 5' },
+            {title: 'Menu 6' },
+            {title: 'Menu 7' },
+            {title: 'Menu 8' }
+        ];
         const mappedProducts = products.map( (product) => {
             return (
-                <Col xs={6} md={3}>
+                <Col xs={6} md={3} key={product.title}>
                     <Thumbnail src={product.image} alt="242x200" height="42">
                         <h3>{product.title}</h3>
                         <p>Description</p>
@@ -22,6 +40,13 @@ class Shop extends Component {
                         <p>Leveransavgift: {product.deliverycost}</p>
                     </Thumbnail>
                 </Col>
+            )
+        });
+        const mappedMenu = menus.map( (menu) => {
+            return (
+                <Checkbox key={menu.title}>
+                    {menu.title}
+                </Checkbox>
             )
         });
 
@@ -46,11 +71,16 @@ class Shop extends Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-                <Col xs={12} md={8} mdOffset={2}>
-                    <h4 className="center-text">Latitude {this.props.params.latitude}, Longitude {this.props.params.longitude}</h4>
+                <Col xs={12} md={2}>
+                    {mappedMenu}
                 </Col>
-                <Col xs={12} md={8} mdOffset={2}>
-                {mappedProducts}
+                <Col xs={12} md={8}>
+                    <Col xs={12} md={12}>
+                        <h4 className="center-text">Latitude {this.props.params.latitude}, Longitude {this.props.params.longitude}</h4>
+                    </Col>
+                    <Col xs={12} md={12}>
+                        {mappedProducts}
+                    </Col>
                 </Col>
             </div>
         );
