@@ -52,7 +52,7 @@ class Start extends Component {
                     </Well>
                 </Col>
                 <Col xs={12} md={2}>
-                    <h2 className="center-text">Florist? Joina!</h2>
+                    <h2 className="center-text">Florist? Gå med!</h2>
                     <Well>
                         <form>
                             <FormGroup controlId="formValidationSuccess1">
@@ -65,7 +65,7 @@ class Start extends Component {
                             </FormGroup>
 
                             <Button type="submit">
-                                Gå vidare
+                                Gå med
                             </Button>
                         </form>
                     </Well>
