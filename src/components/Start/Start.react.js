@@ -9,7 +9,6 @@ import { Navbar, Nav, NavItem, Col, Well, FormGroup, ControlLabel, Button, FormC
 class Start extends Component {
 
     onSuggestSelect(suggest) {
-        console.log(suggest);
         browserHistory.push(`/shop/${suggest.location.lat}/${suggest.location.lng}`);
     }
 

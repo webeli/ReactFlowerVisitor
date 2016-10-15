@@ -3,9 +3,15 @@ import React, { Component } from 'react';
 import Menu from './Menu.react';
 import Products from './Products.react';
 
+import { connect } from 'react-redux';
+import * as productsActions from '../../actions/productsActions';
 import { Navbar, Nav, NavItem, Col } from 'react-bootstrap';
 
 class Shop extends Component {
+
+    componentWillMount() {
+        this.props.getProducts(this.props.routeParams);
+    }
 
     render() {
         return (
@@ -44,4 +50,14 @@ class Shop extends Component {
     }
 }
 
-export default Shop;
+function mapStateToProps(state) {
+    return {
+        auth: state.auth
+    };
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        getProducts: (lat, long) => dispatch(productsActions.getProducts(lat, long))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);
