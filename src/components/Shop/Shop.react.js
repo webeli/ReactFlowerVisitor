@@ -14,6 +14,7 @@ class Shop extends Component {
     }
 
     render() {
+        console.log(this.props.products);
         return (
             <div>
                 <Navbar>
@@ -52,7 +53,8 @@ class Shop extends Component {
 
 function mapStateToProps(state) {
     return {
-        auth: state.auth
+        auth: state.auth,
+        products: state.products
     };
 }
 function mapDispatchToProps(dispatch) {
