@@ -2,44 +2,51 @@ import React, { Component } from 'react';
 
 import { Col, Thumbnail, Button } from 'react-bootstrap';
 
+import { connect } from 'react-redux';
+import * as productsActions from '../../actions/productsActions';
+
 class Products extends Component {
 
     render() {
-        const products = [
-            {title: 'Blomma 1', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
-            {title: 'Blomma 2', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
-            {title: 'Blomma 3', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
-            {title: 'Blomma 4', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
-            {title: 'Blomma 5', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
-            {title: 'Blomma 6', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
-            {title: 'Blomma 7', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' },
-            {title: 'Blomma 8', image:'https://www.ftdimg.com/pics/products/7822_330x370.jpg', florist: 'Gulgatan Florist AB', deliverycost: '49kr' }
-        ];
 
-        const mappedProducts = products.map( (product) => {
-            return (
-                <Col xs={6} md={3} key={product.title}>
-                    <Thumbnail src={product.image} alt="242x200">
-                        <h3>{product.title}</h3>
-                        <p>Description</p>
-                        <p>
-                            <Button bsStyle="default">Läs mer</Button>&nbsp;
-                            <Button bsStyle="default">Köp</Button>
-                        </p>
-                        <hr />
-                        <p>{product.florist}</p>
-                        <p>Leveransavgift: {product.deliverycost}</p>
-                    </Thumbnail>
-                </Col>
-            )
+        const florists = this.props.products;
+
+        const mappedFloristsProducts = Object.keys(florists).map( (florist) => {
+            return Object.keys(florists[florist].products).map( (product) => {
+                let prod = florists[florist].products[product];
+                return (
+                    <Col xs={6} md={3} key={prod.name}>
+                        <Thumbnail src={prod.image} alt="242x200">
+                            <h3>{prod.title}</h3>
+                            <p>
+                                <Button bsStyle="default">Läs mer</Button>&nbsp;
+                                <Button bsStyle="default">Köp</Button>
+                            </p>
+                            <hr />
+                            <p>{prod.name}</p>
+                            <p>Leveransavgift: {prod.price} kr</p>
+                        </Thumbnail>
+                    </Col>
+                );
+            });
         });
 
         return (
             <div>
-                {mappedProducts}
+                {mappedFloristsProducts}
             </div>
         );
     }
 }
 
-export default Products;
+function mapStateToProps(state) {
+    return {
+        products: state.products
+    };
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        getProducts: (lat, long) => dispatch(productsActions.getProducts(lat, long))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
