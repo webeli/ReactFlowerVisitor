@@ -33,8 +33,7 @@ export function getProducts(data) {
             const visitor = {lat:data.latitude, lng:data.longitude};
             const km = snap.val().radius;
 
-            //console.log('[VISITOR]:', visitor.lat, visitor.lng, '[FLORIST]:', florist.lat, florist.lng, '[ISINRADIUS]:', '[KM]:', km, arePointsNear(visitor, florist, km));
-            //dispatch(loadProductsSuccess(snap.val()));
+
             if (arePointsNear(visitor, florist, km)) {
                 const floristRef = firebase.database().ref('florists').child(snap.key);
                 floristRef.once('value', (snap) => {

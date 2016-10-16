@@ -17,14 +17,15 @@ class Products extends Component {
                 return (
                     <Col xs={6} md={3} key={prod.name}>
                         <Thumbnail src={prod.image} alt="242x200">
-                            <h3>{prod.title}</h3>
+                            <h3>{prod.name}</h3>
+                            <h3>{prod.price} kr</h3>
                             <p>
                                 <Button bsStyle="default">Läs mer</Button>&nbsp;
                                 <Button bsStyle="default">Köp</Button>
                             </p>
                             <hr />
-                            <p>{prod.name}</p>
-                            <p>Leveransavgift: {prod.price} kr</p>
+                            <p>{florists[florist].settings_account.name}</p>
+                            <p>Leveransavgift: {florists[florist].settings_account.deliveryfee} kr</p>
                         </Thumbnail>
                     </Col>
                 );
