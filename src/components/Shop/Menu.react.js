@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { Checkbox } from 'react-bootstrap';
 
+import { connect } from 'react-redux';
+
 class Menu extends Component {
 
     render() {
@@ -96,4 +98,10 @@ class Menu extends Component {
     }
 }
 
-export default Menu;
+function mapStateToProps(state) {
+    return {
+        menu: state.menu
+    };
+}
+
+export default connect(mapStateToProps)(Menu);
