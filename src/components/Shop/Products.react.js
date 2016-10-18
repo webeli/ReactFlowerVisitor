@@ -9,32 +9,29 @@ class Products extends Component {
 
     render() {
 
-        const florists = this.props.products;
+        const products = this.props.products.sort();
 
-        const mappedFloristsProducts = Object.keys(florists).map( (florist) => {
-            return Object.keys(florists[florist].products).map( (product) => {
-                let prod = florists[florist].products[product];
-                return (
-                    <Col xs={6} md={3} key={prod.name}>
-                        <Thumbnail src={prod.image} alt="242x200">
-                            <h3>{prod.name}</h3>
-                            <h3>{prod.price} kr</h3>
-                            <p>
-                                <Button bsStyle="default">Läs mer</Button>&nbsp;
-                                <Button bsStyle="default">Köp</Button>
-                            </p>
-                            <hr />
-                            <p>{florists[florist].settings_account.name}</p>
-                            <p>Leveransavgift: {florists[florist].settings_account.deliveryfee} kr</p>
-                        </Thumbnail>
-                    </Col>
-                );
-            });
+        const mappedProducts = products.map( (prod) => {
+            return (
+                <Col xs={6} md={3} key={prod.name}>
+                    <Thumbnail src={prod.image} alt="242x200">
+                        <h3>{prod.name}</h3>
+                        <h3>{prod.price} kr</h3>
+                        <p>
+                            <Button bsStyle="default">Läs mer</Button>&nbsp;
+                            <Button bsStyle="default">Köp</Button>
+                        </p>
+                        <hr />
+                        <p>{prod.floristName}</p>
+                        <p>Leveransavgift: {prod.deliveryfee} kr</p>
+                    </Thumbnail>
+                </Col>
+            )
         });
 
         return (
             <div>
-                {mappedFloristsProducts}
+                {mappedProducts}
             </div>
         );
     }

@@ -36,10 +36,15 @@ export function getProducts(data) {
             if (arePointsNear(visitor, florist, km)) {
                 const floristRef = firebase.database().ref('florists').child(snap.key);
                 floristRef.once('value', (snap) => {
-                    var floristData = {
-                        [snap.key]: snap.val()
-                    };
-                    dispatch(loadProductsSuccess(floristData));
+                    //var floristData = {[snap.key]: snap.val()};
+                    const products = snap.val().products;
+                    const florist = snap.val().settings_account;
+
+                    const newObj = Object.keys(products).map( (product) => {
+                        return {...products[product], floristName:florist.name, deliveryfee:florist.deliveryfee}
+                    });
+
+                    dispatch(loadProductsSuccess(newObj));
                 });
             }
         });

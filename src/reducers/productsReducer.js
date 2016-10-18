@@ -1,11 +1,11 @@
-export default function reducer(state={}, action) {
+export default function reducer(state=[], action) {
     switch(action.type) {
         case "UPDATE_PRODUCTS": {
-            state = {...state, ...action.payload};
+            state = [...state, ...action.payload];
             return state;
         }
         case "CLEAR_PRODUCTS": {
-            state = {};
+            state = [];
             return state;
         }
         default:
