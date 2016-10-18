@@ -10,8 +10,9 @@ class Products extends Component {
     render() {
 
         const products = this.props.products.sort();
+        const productsLimited = products.slice(0,5);
 
-        const mappedProducts = products.map( (prod) => {
+        const mappedProducts = productsLimited.map( (prod) => {
             return (
                 <Col xs={6} md={3} key={prod.name}>
                     <Thumbnail src={prod.image} alt="242x200">
