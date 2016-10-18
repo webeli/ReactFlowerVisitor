@@ -10,7 +10,7 @@ export function loadProductsSuccess(data) {
 export function clearProducts() {
     return {
         type: 'CLEAR_PRODUCTS',
-        payload: {}
+        payload: []
     }
 }
 
