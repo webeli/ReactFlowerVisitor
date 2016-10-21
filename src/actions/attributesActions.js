@@ -17,16 +17,24 @@ export function getAttributes() {
         const state = getState();
         const bucket = state.bucket;
 
+        let productsArrayAttributes = [];
         Object.keys(bucket).forEach((florist)=>{
-            let productsArrayAttributes = [];
             if (bucket[florist].products) {
-                productsArrayAttributes = Object.keys(bucket[florist].products).map((product) => {
+                const currentFloristAttributes = Object.keys(bucket[florist].products).map((product) => {
                     return {...bucket[florist].products[product].attributes};
                 });
+                productsArrayAttributes.push(...currentFloristAttributes);
             }
-
-
         });
-        //dispatch(loadAttributesSuccess(attributesObj));
+
+        let colours = {};
+        let types = {};
+        let events = {};
+        productsArrayAttributes.forEach((prodAttributes)=> {
+            colours = Object.assign({}, colours, prodAttributes.colours);
+            types = Object.assign({}, types, prodAttributes.types);
+            events = Object.assign({}, events, prodAttributes.events);
+        });
+        dispatch(loadAttributesSuccess({colours:colours, types:types, events:events}));
     }
 }

@@ -10,19 +10,20 @@ class Products extends Component {
         const products = this.props.products.sort();
         const productsLimited = products.slice(0,5);
 
-        const mappedProducts = productsLimited.map( (prod) => {
+        const mappedProducts = productsLimited.map( (prod, index) => {
             return (
-                <Col xs={6} md={3} key={prod.name}>
+                <Col xs={6} md={3} key={index}>
                     <Thumbnail src={prod.image} alt="242x200">
-                        <h3>{prod.name}</h3>
-                        <h3>{prod.price} kr</h3>
+                        <h4>{prod.name}</h4>
+                        <p>{prod.price} kr</p>
                         <p>
-                            <Button bsStyle="default">Läs mer</Button>&nbsp;
-                            <Button bsStyle="default">Köp</Button>
+                            <Button bsSize="small">Läs mer</Button>&nbsp;
+                            <Button bsSize="small">Köp</Button>
                         </p>
                         <hr />
-                        <p>{prod.floristName}</p>
-                        <p>Leveransavgift: {prod.deliveryfee} kr</p>
+                        <p style={{fontSize:'10px'}}>{prod.floristName || 'Din Florist AB'}</p>
+                        <p style={{fontSize:'10px'}}>{prod.adress || 'Florist Gatan 9, Helsingborg'}</p>
+                        <p style={{fontSize:'10px'}}>Leveransavgift: {prod.deliveryfee || '99'}kr</p>
                     </Thumbnail>
                 </Col>
             )

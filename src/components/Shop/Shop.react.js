@@ -48,7 +48,7 @@ class Shop extends Component {
                 </Col>
                 <Col xs={12} md={8}>
                     <Col xs={12} md={12}>
-                        <h4 className="center-text">Latitude {this.props.params.latitude}, Longitude {this.props.params.longitude}</h4>
+                        <p className="center-text">Latitude {this.props.params.latitude}, Longitude {this.props.params.longitude}</p>
                     </Col>
                     <Col xs={12} md={12}>
                         <Products />
