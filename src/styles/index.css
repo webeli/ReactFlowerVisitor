@@ -3,3 +3,17 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.radio, .checkbox {
+  margin:1px!important;
+}
+.panel {
+  margin-bottom:2px!important;
+  box-shadow:none!important;
+}
+.panel-body {
+ padding:0 5px!important;
+}
+h5 {
+  margin-bottom:2px!important;
+  margin-top:15px!important;
+}

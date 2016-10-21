@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Checkbox } from 'react-bootstrap';
+import { Checkbox, Panel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 class Menu extends Component {
@@ -8,16 +8,15 @@ class Menu extends Component {
 
         let mappedColorMenu, mappedTypeMenu, mappedEventMenu;
 
-        console.log(this.props.attributes.colours);
         if (this.props.attributes.colours) {
             mappedColorMenu = Object.keys(this.props.attributes.colours).map( (colour) => {
-                return ( <Checkbox key={colour}>{colour}</Checkbox> )
+                return ( <Panel><Checkbox key={colour}>{colour}</Checkbox></Panel> )
             });
             mappedTypeMenu = Object.keys(this.props.attributes.types).map( (type) => {
-                return ( <Checkbox key={type}>{type}</Checkbox> )
+                return ( <Panel><Checkbox key={type}>{type}</Checkbox></Panel> )
             });
             mappedEventMenu = Object.keys(this.props.attributes.events).map( (event) => {
-                return ( <Checkbox key={event}>{event}</Checkbox> )
+                return ( <Panel><Checkbox key={event}>{event}</Checkbox></Panel> )
             });
         } else {
             mappedColorMenu = () => {
@@ -39,16 +38,16 @@ class Menu extends Component {
 
         return (
             <div>
-                <h4>Pris</h4>
-                <Checkbox>0 - 199kr</Checkbox>
-                <Checkbox>200 - 399kr</Checkbox>
-                <Checkbox>400 - 599kr</Checkbox>
-                <Checkbox>600kr +</Checkbox>
-                <h4>Färg</h4>
+                <h5 style={{fontSize:'11px'}}>Pris</h5>
+                <Panel><Checkbox>0 - 199kr</Checkbox></Panel>
+                <Panel><Checkbox>200 - 399kr</Checkbox></Panel>
+                <Panel><Checkbox>400 - 599kr</Checkbox></Panel>
+                <Panel><Checkbox>600kr +</Checkbox></Panel>
+                <h5 style={{fontSize:'11px'}}>Färg</h5>
                 {mappedColorMenu}
-                <h4>Blomstertyp</h4>
+                <h5 style={{fontSize:'11px'}}>Blomstertyp</h5>
                 {mappedTypeMenu}
-                <h4>Event</h4>
+                <h5 style={{fontSize:'11px'}}>Event</h5>
                 {mappedEventMenu}
             </div>
         );
