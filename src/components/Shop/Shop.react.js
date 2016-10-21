@@ -4,13 +4,22 @@ import Menu from './Menu.react';
 import Products from './Products.react';
 
 import { connect } from 'react-redux';
+import * as bucketActions from '../../actions/bucketActions';
+import * as attributesActions from '../../actions/attributesActions';
 import * as productsActions from '../../actions/productsActions';
 import { Navbar, Nav, NavItem, Col } from 'react-bootstrap';
 
 class Shop extends Component {
 
     componentWillMount() {
-        this.props.getProducts(this.props.routeParams);
+        this.props.getBucketForVisitor(this.props.routeParams);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (Object.keys(nextProps.bucket).length !== 0) {
+            this.props.getProducts();
+            this.props.getAttributes();
+        }
     }
 
     render() {
@@ -52,12 +61,14 @@ class Shop extends Component {
 
 function mapStateToProps(state) {
     return {
-        auth: state.auth
+        bucket: state.bucket
     };
 }
 function mapDispatchToProps(dispatch) {
     return {
-        getProducts: (lat, long) => dispatch(productsActions.getProducts(lat, long))
+        getBucketForVisitor: (lat, long) => dispatch(bucketActions.getBucketForVisitor(lat, long)),
+        getProducts: () => dispatch(productsActions.getProducts()),
+        getAttributes: () => dispatch(attributesActions.getAttributes())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Shop);

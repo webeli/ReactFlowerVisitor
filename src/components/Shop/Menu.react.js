@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 class Menu extends Component {
 
     render() {
+
+        console.log("attributes..", this.props.attributes);
+
         const menus = [{
                 "categoryName": "Pris",
                 "categoryMenus": [
@@ -100,8 +103,7 @@ class Menu extends Component {
 
 function mapStateToProps(state) {
     return {
-        menu: state.menu
+        attributes: state.attributes
     };
 }
-
 export default connect(mapStateToProps)(Menu);

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { Col, Thumbnail, Button } from 'react-bootstrap';
-
-import { connect } from 'react-redux';
-import * as productsActions from '../../actions/productsActions';
 
 class Products extends Component {
 
@@ -43,9 +41,4 @@ function mapStateToProps(state) {
         products: state.products
     };
 }
-function mapDispatchToProps(dispatch) {
-    return {
-        getProducts: (lat, long) => dispatch(productsActions.getProducts(lat, long))
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default connect(mapStateToProps)(Products);
