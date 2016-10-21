@@ -1,95 +1,49 @@
 import React, { Component } from 'react';
-
 import { Checkbox } from 'react-bootstrap';
-
 import { connect } from 'react-redux';
 
 class Menu extends Component {
 
     render() {
 
-        console.log("attributes..", this.props.attributes);
+        let mappedColorMenu, mappedTypeMenu, mappedEventMenu;
 
-        const menus = [{
-                "categoryName": "Pris",
-                "categoryMenus": [
-                    { "title": "0 - 199kr" },
-                    { "title": "200 - 399kr" },
-                    { "title": "400 - 599kr" },
-                    { "title": "600kr +" }
-                ]
-            },
-            {
-                "categoryName": "Färg",
-                "categoryMenus": [
-                    { "title": "Blå" },
-                    { "title": "Grön" },
-                    { "title": "Gul" },
-                    { "title": "Rosa" },
-                    { "title": "Svart" },
-                    { "title": "Vit" }
-                ]
-            },
-            {
-                "categoryName": "Blomstertyp",
-                "categoryMenus": [
-                    { "title": "Rosor" },
-                    { "title": "Orkideér" },
-                    { "title": "Påskeliljer" },
-                    { "title": "Orkideer" },
-                    { "title": "Kransar" },
-                    { "title": "Krukväxter" },
-                    { "title": "Liljer" }
-                ]
-            },
-            {
-                "categoryName": "Event",
-                "categoryMenus": [
-                    { "title": "Födelsedag" },
-                    { "title": "Bröllop" },
-                    { "title": "Nyfödd" },
-                    { "title": "Begravning/Kondoleans" },
-                    { "title": "Krya på dig" },
-                    { "title": "Vänskap" },
-                    { "title": "Tack-blommor" },
-                    { "title": "Kärlek" },
-                    { "title": "Övrigt" }
-                ]
-            }];
-
-        const mappedPriceMenu = menus[0].categoryMenus.map( (menu) => {
-            return (
-                <Checkbox key={menu.title}>
-                    {menu.title}
-                </Checkbox>
-            )
-        });
-        const mappedColorMenu = menus[1].categoryMenus.map( (menu) => {
-            return (
-                <Checkbox key={menu.title}>
-                    {menu.title}
-                </Checkbox>
-            )
-        });
-        const mappedTypeMenu = menus[2].categoryMenus.map( (menu) => {
-            return (
-                <Checkbox key={menu.title}>
-                    {menu.title}
-                </Checkbox>
-            )
-        });
-        const mappedEventMenu = menus[3].categoryMenus.map( (menu) => {
-            return (
-                <Checkbox key={menu.title}>
-                    {menu.title}
-                </Checkbox>
-            )
-        });
+        console.log(this.props.attributes.colours);
+        if (this.props.attributes.colours) {
+            mappedColorMenu = Object.keys(this.props.attributes.colours).map( (colour) => {
+                return ( <Checkbox key={colour}>{colour}</Checkbox> )
+            });
+            mappedTypeMenu = Object.keys(this.props.attributes.types).map( (type) => {
+                return ( <Checkbox key={type}>{type}</Checkbox> )
+            });
+            mappedEventMenu = Object.keys(this.props.attributes.events).map( (event) => {
+                return ( <Checkbox key={event}>{event}</Checkbox> )
+            });
+        } else {
+            mappedColorMenu = () => {
+                return (
+                    <img src="http://bestanimations.com/Science/Gears/loadinggears/loading-gear-2.gif" height="50px" alt="Mountain View"/>
+                )
+            };
+            mappedTypeMenu = () => {
+                return (
+                    <img src="http://bestanimations.com/Science/Gears/loadinggears/loading-gear-2.gif" alt="Mountain View"/>
+                )
+            };
+            mappedEventMenu = () => {
+                return (
+                    <img src="http://bestanimations.com/Science/Gears/loadinggears/loading-gear-2.gif" alt="Mountain View"/>
+                )
+            };
+        }
 
         return (
             <div>
                 <h4>Pris</h4>
-                {mappedPriceMenu}
+                <Checkbox>0 - 199kr</Checkbox>
+                <Checkbox>200 - 399kr</Checkbox>
+                <Checkbox>400 - 599kr</Checkbox>
+                <Checkbox>600kr +</Checkbox>
                 <h4>Färg</h4>
                 {mappedColorMenu}
                 <h4>Blomstertyp</h4>

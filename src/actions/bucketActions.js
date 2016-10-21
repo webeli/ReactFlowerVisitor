@@ -17,9 +17,6 @@ export function clearBucket() {
 
 export function getBucketForVisitor(visitor) {
     return function(dispatch) {
-
-        dispatch(clearBucket());
-
         const getBucketForVisitor = (floristsArray) => {
             const floristsArrayLength = floristsArray.length;
             let counter = 0;

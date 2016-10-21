@@ -4,9 +4,20 @@ import Geosuggest from 'react-geosuggest';
 import '../../styles/geosuggest.css';
 import '../../styles/Start.css';
 
+import { connect } from 'react-redux';
+import * as bucketActions from '../../actions/bucketActions';
+import * as attributesActions from '../../actions/attributesActions';
+import * as productsActions from '../../actions/productsActions';
+
 import { Navbar, Nav, NavItem, Col, Well, FormGroup, ControlLabel, Button, FormControl } from 'react-bootstrap';
 
 class Start extends Component {
+
+    componentWillMount() {
+        this.props.clearBucket();
+        this.props.clearProducts();
+        this.props.clearAttributes();
+    }
 
     onSuggestSelect(suggest) {
         browserHistory.push(`/shop/${suggest.location.lat}/${suggest.location.lng}`);
@@ -75,4 +86,14 @@ class Start extends Component {
     }
 }
 
-export default Start;
+function mapStateToProps(state) {
+    return {};
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        clearBucket: () => dispatch(bucketActions.clearBucket()),
+        clearProducts: () => dispatch(productsActions.clearProducts()),
+        clearAttributes: () => dispatch(attributesActions.clearAttributes())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Start);
