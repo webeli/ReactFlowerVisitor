@@ -15,9 +15,9 @@ class Products extends Component {
             );
         } else {
             const products = this.props.products.sort();
-            const productsLimited = products.slice(0,5);
+            //const productsLimited = products.slice(0,5);
 
-            mappedProducts = productsLimited.map( (prod, index) => {
+            mappedProducts = products.map( (prod, index) => {
                 return (
                     <Col xs={6} md={3} key={prod.productKey}>
                         <Thumbnail src={prod.image} bsClass="thumbnail product" alt="flower">
