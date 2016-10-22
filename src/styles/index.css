@@ -17,3 +17,6 @@ h5 {
   margin-bottom:2px!important;
   margin-top:15px!important;
 }
+.thumbnail.product img {
+  height:130px;
+}

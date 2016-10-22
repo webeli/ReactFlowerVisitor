@@ -7,27 +7,35 @@ class Products extends Component {
 
     render() {
 
-        const products = this.props.products.sort();
-        const productsLimited = products.slice(0,5);
+        console.log("products",this.props.products);
+        let mappedProducts;
 
-        const mappedProducts = productsLimited.map( (prod, index) => {
-            return (
-                <Col xs={6} md={3} key={index}>
-                    <Thumbnail src={prod.image} alt="242x200">
-                        <h4>{prod.name}</h4>
-                        <p>{prod.price} kr</p>
-                        <p>
-                            <Button bsSize="small">Läs mer</Button>&nbsp;
-                            <Button bsSize="small">Köp</Button>
-                        </p>
-                        <hr />
-                        <p style={{fontSize:'10px'}}>{prod.floristName || 'Din Florist AB'}</p>
-                        <p style={{fontSize:'10px'}}>{prod.adress || 'Florist Gatan 9, Helsingborg'}</p>
-                        <p style={{fontSize:'10px'}}>Leveransavgift: {prod.deliveryfee || '99'}kr</p>
-                    </Thumbnail>
-                </Col>
-            )
-        });
+        if (this.props.products.length === 0) {
+            mappedProducts = (
+                <img src="http://interestingengineering.com/loading.gif" style={{height:'250px',marginLeft:'-125px',paddingLeft:'50%'}} alt=""/>
+            );
+        } else {
+            const products = this.props.products.sort();
+            const productsLimited = products.slice(0,5);
+
+            mappedProducts = productsLimited.map( (prod, index) => {
+                return (
+                    <Col xs={6} md={3} key={prod.productKey}>
+                        <Thumbnail src={prod.image} bsClass="thumbnail product" alt="flower">
+                            <h4>{prod.name}</h4>
+                            <p>{prod.price} kr</p>
+                            <p>
+                                <Button bsSize="small">Lägg i kundvagn</Button>
+                            </p>
+                            <hr />
+                            <p style={{fontSize:'10px'}}>{prod.floristName || 'Hitta inget bolagsnamn'}</p>
+                            <p style={{fontSize:'10px'}}>{prod.floristAdress || 'Hitta ingen adress'}</p>
+                            <p style={{fontSize:'10px'}}>Leveransavgift: {prod.floristFee || '0'}kr</p>
+                        </Thumbnail>
+                    </Col>
+                )
+            });
+        }
 
         return (
             <div>

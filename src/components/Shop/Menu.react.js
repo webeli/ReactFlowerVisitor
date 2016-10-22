@@ -6,43 +6,45 @@ class Menu extends Component {
 
     render() {
 
-        let mappedColorMenu, mappedTypeMenu, mappedEventMenu;
+        let mappedPriceMenu, mappedColorMenu, mappedTypeMenu, mappedEventMenu;
 
         if (this.props.attributes.colours) {
-            mappedColorMenu = Object.keys(this.props.attributes.colours).map( (colour) => {
-                return ( <Panel><Checkbox key={colour}>{colour}</Checkbox></Panel> )
+            mappedPriceMenu = (
+                <div>
+                    <Panel><Checkbox>0 - 199kr</Checkbox></Panel>
+                    <Panel><Checkbox>200 - 399kr</Checkbox></Panel>
+                    <Panel><Checkbox>400 - 599kr</Checkbox></Panel>
+                    <Panel><Checkbox>600kr +</Checkbox></Panel>
+                </div>
+            );
+            mappedColorMenu = Object.keys(this.props.attributes.colours).map( (colour, index) => {
+                return ( <Panel key={index}><Checkbox>{colour}</Checkbox></Panel> )
             });
-            mappedTypeMenu = Object.keys(this.props.attributes.types).map( (type) => {
-                return ( <Panel><Checkbox key={type}>{type}</Checkbox></Panel> )
+            mappedTypeMenu = Object.keys(this.props.attributes.types).map( (type, index) => {
+                return ( <Panel key={index}><Checkbox>{type}</Checkbox></Panel> )
             });
-            mappedEventMenu = Object.keys(this.props.attributes.events).map( (event) => {
-                return ( <Panel><Checkbox key={event}>{event}</Checkbox></Panel> )
+            mappedEventMenu = Object.keys(this.props.attributes.events).map( (event, index) => {
+                return ( <Panel key={index}><Checkbox>{event}</Checkbox></Panel> )
             });
         } else {
-            mappedColorMenu = () => {
-                return (
-                    <img src="http://bestanimations.com/Science/Gears/loadinggears/loading-gear-2.gif" height="50px" alt="Mountain View"/>
-                )
-            };
-            mappedTypeMenu = () => {
-                return (
-                    <img src="http://bestanimations.com/Science/Gears/loadinggears/loading-gear-2.gif" alt="Mountain View"/>
-                )
-            };
-            mappedEventMenu = () => {
-                return (
-                    <img src="http://bestanimations.com/Science/Gears/loadinggears/loading-gear-2.gif" alt="Mountain View"/>
-                )
-            };
+            mappedPriceMenu = (
+                <img src="http://interestingengineering.com/loading.gif" style={{height:'150px'}} alt=""/>
+            );
+            mappedColorMenu = (
+                <img src="http://interestingengineering.com/loading.gif" style={{height:'150px'}} alt=""/>
+            );
+            mappedTypeMenu = (
+                <img src="http://interestingengineering.com/loading.gif" style={{width:'150px'}} alt=""/>
+            );
+            mappedEventMenu = (
+                <img src="http://interestingengineering.com/loading.gif" style={{width:'150px'}} alt=""/>
+            );
         }
 
         return (
             <div>
                 <h5 style={{fontSize:'11px'}}>Pris</h5>
-                <Panel><Checkbox>0 - 199kr</Checkbox></Panel>
-                <Panel><Checkbox>200 - 399kr</Checkbox></Panel>
-                <Panel><Checkbox>400 - 599kr</Checkbox></Panel>
-                <Panel><Checkbox>600kr +</Checkbox></Panel>
+                {mappedPriceMenu}
                 <h5 style={{fontSize:'11px'}}>Färg</h5>
                 {mappedColorMenu}
                 <h5 style={{fontSize:'11px'}}>Blomstertyp</h5>
