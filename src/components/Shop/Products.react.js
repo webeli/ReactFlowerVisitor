@@ -7,7 +7,6 @@ class Products extends Component {
 
     render() {
 
-        console.log("products",this.props.products);
         let mappedProducts;
 
         if (this.props.products.length === 0) {
