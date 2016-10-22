@@ -33,6 +33,9 @@ export function getProducts() {
                     }
                 });
                 productsArray = [...productsArray, ...newProducts];
+                return true;
+            } else {
+                return true;
             }
         });
         dispatch(loadProductsSuccess(productsArray));

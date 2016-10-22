@@ -7,6 +7,45 @@ class Products extends Component {
 
     render() {
 
+        console.log('products', this.props.products, 'filter', this.props.filter);
+        // Compares ["a", "b", "c"] with ["c", "d", "e"]
+        function compareArrays(flower, filter) {
+            for	(var i=0;i<filter.length;i++) {
+                if ((flower[filter[i]]))
+                    return true;
+            }
+            return false;
+        }
+
+        // Returns a sorted list
+        function sortList(list, filter){
+            var sortedList = [];
+            list.map(function(flower){
+                if (filterFlower(flower, filter)) {
+                    sortedList.push(flower);
+                }
+                return true;
+            });
+            return sortedList;
+        }
+
+        // Compares filter with attributes
+        function filterFlower(flower, filter) {
+            var shouldReturn = true;
+            for (var group in flower.attributes) {
+                if(filter[group].length > 0) {
+                    var found = compareArrays(flower.attributes[group], filter[group]);
+                    if (!found) {
+                        shouldReturn = false
+                    }
+                }
+            }
+            return shouldReturn;
+        }
+
+        const filteredProducts = sortList(this.props.products, this.props.filter);
+        console.log('filteredProducts', filteredProducts);
+
         let mappedProducts;
 
         if (this.props.products.length === 0) {
@@ -14,7 +53,7 @@ class Products extends Component {
                 <img src="http://interestingengineering.com/loading.gif" style={{height:'250px',marginLeft:'-125px',paddingLeft:'50%'}} alt=""/>
             );
         } else {
-            const products = this.props.products.sort();
+            const products = filteredProducts.sort();
             //const productsLimited = products.slice(0,5);
 
             mappedProducts = products.map( (prod, index) => {
@@ -46,7 +85,8 @@ class Products extends Component {
 
 function mapStateToProps(state) {
     return {
-        products: state.products
+        products: state.products,
+        filter: state.filter
     };
 }
 export default connect(mapStateToProps)(Products);

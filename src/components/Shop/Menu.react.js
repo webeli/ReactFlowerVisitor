@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Checkbox, Panel } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import * as filterActions from '../../actions/filterActions';
 
 class Menu extends Component {
 
@@ -18,13 +19,13 @@ class Menu extends Component {
                 </div>
             );
             mappedColorMenu = Object.keys(this.props.attributes.colours).map( (colour, index) => {
-                return ( <Panel key={index}><Checkbox>{colour}</Checkbox></Panel> )
+                return ( <Panel key={index}><Checkbox onClick={()=>this.props.updateFilterColours(colour)}>{colour}</Checkbox></Panel> )
             });
             mappedTypeMenu = Object.keys(this.props.attributes.types).map( (type, index) => {
-                return ( <Panel key={index}><Checkbox>{type}</Checkbox></Panel> )
+                return ( <Panel key={index}><Checkbox onClick={()=>this.props.updateFilterTypes(type)}>{type}</Checkbox></Panel> )
             });
             mappedEventMenu = Object.keys(this.props.attributes.events).map( (event, index) => {
-                return ( <Panel key={index}><Checkbox>{event}</Checkbox></Panel> )
+                return ( <Panel key={index}><Checkbox onClick={()=>this.props.updateFilterEvents(event)}>{event}</Checkbox></Panel> )
             });
         } else {
             mappedPriceMenu = (
@@ -58,7 +59,15 @@ class Menu extends Component {
 
 function mapStateToProps(state) {
     return {
-        attributes: state.attributes
+        attributes: state.attributes,
+        filter: state.filter
     };
 }
-export default connect(mapStateToProps)(Menu);
+function mapDispatchToProps(dispatch) {
+    return {
+        updateFilterColours: (value) => dispatch(filterActions.updateFilterColours(value)),
+        updateFilterTypes: (value) => dispatch(filterActions.updateFilterTypes(value)),
+        updateFilterEvents: (value) => dispatch(filterActions.updateFilterEvents(value))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
