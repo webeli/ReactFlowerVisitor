@@ -2,7 +2,7 @@ export function updateFilterColours(value, checked) {
     return function(dispatch) {
         if (checked) {
             dispatch({
-                type: 'UPDATE_FILTER_COLOURS',
+                type: 'ADD_FILTER_COLOURS',
                 payload: value
             });
         } else {
@@ -17,7 +17,7 @@ export function updateFilterTypes(value, checked) {
     return function(dispatch) {
         if (checked) {
             dispatch({
-                type: 'UPDATE_FILTER_TYPES',
+                type: 'ADD_FILTER_TYPES',
                 payload: value
             });
         } else {
@@ -32,7 +32,7 @@ export function updateFilterEvents(value, checked) {
     return function(dispatch) {
         if (checked) {
             dispatch({
-                type: 'UPDATE_FILTER_EVENTS',
+                type: 'ADD_FILTER_EVENTS',
                 payload: value
             });
         } else {
