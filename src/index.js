@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import store from './store';
 import { Provider } from 'react-redux';
 import * as firebase from 'firebase';
-import App from './components/App';
+import MyApp from './components/MyApp';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import './styles/index.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // Initialize Firebase
 var config = {
@@ -17,6 +18,12 @@ var config = {
     messagingSenderId: "29712322543"
 };
 firebase.initializeApp(config);
+
+const App = () => (
+    <MuiThemeProvider>
+        <MyApp />
+    </MuiThemeProvider>
+);
 
 ReactDOM.render(
     <Provider store={store}>

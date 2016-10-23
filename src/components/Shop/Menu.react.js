@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Checkbox, Panel } from 'react-bootstrap';
+import { } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import * as filterActions from '../../actions/filterActions';
+import Checkbox from 'material-ui/Checkbox';
 
 class Menu extends Component {
 
@@ -12,20 +13,21 @@ class Menu extends Component {
         if (this.props.attributes.colours) {
             mappedPriceMenu = (
                 <div>
-                    <Panel><Checkbox>0 - 199kr</Checkbox></Panel>
-                    <Panel><Checkbox>200 - 399kr</Checkbox></Panel>
-                    <Panel><Checkbox>400 - 599kr</Checkbox></Panel>
-                    <Panel><Checkbox>600kr +</Checkbox></Panel>
+                    <Checkbox label="0 - 199kr"/>
+                    <Checkbox label="200 - 299kr"/>
+                    <Checkbox label="300 - 399kr"/>
+                    <Checkbox label="400 - 499kr"/>
+                    <Checkbox label="500+"/>
                 </div>
             );
             mappedColorMenu = Object.keys(this.props.attributes.colours).map( (colour, index) => {
-                return ( <Panel key={index}><Checkbox onClick={()=>this.props.updateFilterColours(colour)}>{colour}</Checkbox></Panel> )
+                return ( <Checkbox key={index} label={colour} onCheck={(e, checked)=>this.props.updateFilterColours(colour, checked)}/> )
             });
             mappedTypeMenu = Object.keys(this.props.attributes.types).map( (type, index) => {
-                return ( <Panel key={index}><Checkbox onClick={()=>this.props.updateFilterTypes(type)}>{type}</Checkbox></Panel> )
+                return ( <Checkbox key={index} label={type} onCheck={(e, checked)=>this.props.updateFilterTypes(type, checked)}/> )
             });
             mappedEventMenu = Object.keys(this.props.attributes.events).map( (event, index) => {
-                return ( <Panel key={index}><Checkbox onClick={()=>this.props.updateFilterEvents(event)}>{event}</Checkbox></Panel> )
+                return ( <Checkbox key={index} label={event} onCheck={(e, checked)=>this.props.updateFilterEvents(event, checked)}/> )
             });
         } else {
             mappedPriceMenu = (
@@ -65,9 +67,9 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        updateFilterColours: (value) => dispatch(filterActions.updateFilterColours(value)),
-        updateFilterTypes: (value) => dispatch(filterActions.updateFilterTypes(value)),
-        updateFilterEvents: (value) => dispatch(filterActions.updateFilterEvents(value))
+        updateFilterColours: (value, checked) => dispatch(filterActions.updateFilterColours(value, checked)),
+        updateFilterTypes: (value, checked) => dispatch(filterActions.updateFilterTypes(value, checked)),
+        updateFilterEvents: (value, checked) => dispatch(filterActions.updateFilterEvents(value, checked))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);
