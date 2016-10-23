@@ -3,6 +3,7 @@ import { } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import * as filterActions from '../../actions/filterActions';
 import Checkbox from 'material-ui/Checkbox';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Menu extends Component {
 
@@ -31,16 +32,16 @@ class Menu extends Component {
             });
         } else {
             mappedPriceMenu = (
-                <img src="http://interestingengineering.com/loading.gif" style={{height:'150px'}} alt=""/>
+                <CircularProgress style={{marginTop:'10px'}}/>
             );
             mappedColorMenu = (
-                <img src="http://interestingengineering.com/loading.gif" style={{height:'150px'}} alt=""/>
+                <CircularProgress style={{marginTop:'10px'}}/>
             );
             mappedTypeMenu = (
-                <img src="http://interestingengineering.com/loading.gif" style={{width:'150px'}} alt=""/>
+                <CircularProgress style={{marginTop:'10px'}}/>
             );
             mappedEventMenu = (
-                <img src="http://interestingengineering.com/loading.gif" style={{width:'150px'}} alt=""/>
+                <CircularProgress style={{marginTop:'10px'}}/>
             );
         }
 

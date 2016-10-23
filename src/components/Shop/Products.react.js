@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { Col, Thumbnail, Button } from 'react-bootstrap';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Products extends Component {
 
@@ -50,7 +51,7 @@ class Products extends Component {
 
         if (this.props.products.length === 0) {
             mappedProducts = (
-                <img src="http://interestingengineering.com/loading.gif" style={{height:'250px',marginLeft:'-125px',paddingLeft:'50%'}} alt=""/>
+                <CircularProgress size={80} thickness={5} style={{marginLeft:'-40px',paddingLeft:'50%'}} />
             );
         } else {
             const products = filteredProducts.sort();
