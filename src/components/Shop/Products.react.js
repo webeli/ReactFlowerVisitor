@@ -4,56 +4,17 @@ import { connect } from 'react-redux';
 import { Col, Thumbnail, Button } from 'react-bootstrap';
 import CircularProgress from 'material-ui/CircularProgress';
 
+import { sortList } from '../../lib/filter';
+
 class Products extends Component {
 
     render() {
 
-        console.log('products', this.props.products, 'filter', this.props.filter);
-        // Compares ["a", "b", "c"] with ["c", "d", "e"]
-        function compareArrays(flower, filter) {
-            for	(var i=0;i<filter.length;i++) {
-                if ((flower[filter[i]]))
-                    return true;
-            }
-            return false;
-        }
-
-        // Returns a sorted list
-        function sortList(list, filter){
-            var sortedList = [];
-            list.map(function(flower){
-                if (filterFlower(flower, filter)) {
-                    sortedList.push(flower);
-                }
-                return true;
-            });
-            return sortedList;
-        }
-
-        // Compares filter with attributes
-        function filterFlower(flower, filter) {
-            var shouldReturn = true;
-            for (var group in flower.attributes) {
-                if(filter[group].length > 0) {
-                    var found = compareArrays(flower.attributes[group], filter[group]);
-                    if (!found) {
-                        shouldReturn = false
-                    }
-                }
-            }
-            return shouldReturn;
-        }
-
-        const filteredProducts = sortList(this.props.products, this.props.filter);
-        console.log('filteredProducts', filteredProducts);
-
         let mappedProducts;
 
-        if (this.props.products.length === 0) {
-            mappedProducts = (
-                <CircularProgress size={80} thickness={5} style={{marginLeft:'-40px',paddingLeft:'50%'}} />
-            );
-        } else {
+        if (this.props.products.length > 0) {
+            // Run sortList on products
+            const filteredProducts = sortList(this.props.products, this.props.filter);
             const products = filteredProducts.sort();
             //const productsLimited = products.slice(0,5);
 
@@ -74,6 +35,10 @@ class Products extends Component {
                     </Col>
                 )
             });
+        } else {
+            mappedProducts = (
+                <CircularProgress size={80} thickness={5} style={{marginLeft:'-40px',paddingLeft:'50%'}} />
+            );
         }
 
         return (

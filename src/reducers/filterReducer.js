@@ -25,7 +25,7 @@ export default function reducer(state={colours:[], types:[], events:[]}, action)
             return state;
         }
         case "CLEAR_FILTER": {
-            state = {};
+            state = {colours:[], types:[], events:[]};
             return state;
         }
         default:

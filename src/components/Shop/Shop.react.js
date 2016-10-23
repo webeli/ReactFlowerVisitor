@@ -60,7 +60,6 @@ class Shop extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("bucket", state.bucket);
     return {
         bucket: state.bucket
     };

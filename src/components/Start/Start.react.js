@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import * as bucketActions from '../../actions/bucketActions';
 import * as attributesActions from '../../actions/attributesActions';
 import * as productsActions from '../../actions/productsActions';
+import * as filterActions from '../../actions/filterActions';
 
 import { Navbar, Nav, NavItem, Col, Well, FormGroup, ControlLabel, Button, FormControl } from 'react-bootstrap';
 
@@ -17,6 +18,7 @@ class Start extends Component {
         this.props.clearBucket();
         this.props.clearProducts();
         this.props.clearAttributes();
+        this.props.clearFilter();
     }
 
     onSuggestSelect(suggest) {
@@ -93,7 +95,8 @@ function mapDispatchToProps(dispatch) {
     return {
         clearBucket: () => dispatch(bucketActions.clearBucket()),
         clearProducts: () => dispatch(productsActions.clearProducts()),
-        clearAttributes: () => dispatch(attributesActions.clearAttributes())
+        clearAttributes: () => dispatch(attributesActions.clearAttributes()),
+        clearFilter: () => dispatch(filterActions.clearFilter())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Start);
