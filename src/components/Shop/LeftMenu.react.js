@@ -5,7 +5,7 @@ import * as filterActions from '../../actions/filterActions';
 import Checkbox from 'material-ui/Checkbox';
 import CircularProgress from 'material-ui/CircularProgress';
 
-class Menu extends Component {
+class LeftMenu extends Component {
 
     render() {
 
@@ -46,15 +46,15 @@ class Menu extends Component {
         }
 
         return (
-            <div>
-                <h5 style={{fontSize:'11px'}}>Pris</h5>
+            <div style={{fontSize:'11px'}}>
+                <h5 style={{fontSize:'11px', marginLeft:'3px', fontWeight:'bold'}}>Pris</h5>
                 {mappedPriceMenu}
-                <h5 style={{fontSize:'11px'}}>Färg</h5>
-                {mappedColorMenu}
-                <h5 style={{fontSize:'11px'}}>Blomstertyp</h5>
+                <h5 style={{fontSize:'11px', marginLeft:'3px', fontWeight:'bold'}}>Typ</h5>
                 {mappedTypeMenu}
-                <h5 style={{fontSize:'11px'}}>Event</h5>
+                <h5 style={{fontSize:'11px', marginLeft:'3px', fontWeight:'bold'}}>Event</h5>
                 {mappedEventMenu}
+                <h5 style={{fontSize:'11px', marginLeft:'3px', fontWeight:'bold'}}>Färg</h5>
+                {mappedColorMenu}
             </div>
         );
     }
@@ -73,4 +73,4 @@ function mapDispatchToProps(dispatch) {
         updateFilterEvents: (value, checked) => dispatch(filterActions.updateFilterEvents(value, checked))
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(LeftMenu);

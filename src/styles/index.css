@@ -20,3 +20,6 @@ h5 {
 .thumbnail.product img {
   height:130px;
 }
+label {
+  margin-bottom:0px!important;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Menu from './Menu.react';
+import LeftMenu from './LeftMenu.react.js';
 import Products from './Products.react';
 
 import { connect } from 'react-redux';
@@ -44,7 +44,7 @@ class Shop extends Component {
                     </Navbar.Collapse>
                 </Navbar>
                 <Col xs={12} md={2}>
-                    <Menu />
+                    <LeftMenu />
                 </Col>
                 <Col xs={12} md={8}>
                     <Col xs={12} md={12}>
