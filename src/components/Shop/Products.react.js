@@ -15,6 +15,7 @@ class Products extends Component {
         if (this.props.products.length > 0) {
             // Run sortList on products
             const filteredProducts = sortList(this.props.products, this.props.filter);
+            //filterbyprice
             const products = filteredProducts.sort();
             //const productsLimited = products.slice(0,5);
 

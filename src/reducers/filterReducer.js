@@ -24,6 +24,10 @@ export default function reducer(state={colours:[], types:[], events:[]}, action)
             state = {...state, events:state.events.filter(event => event !== action.payload)};
             return state;
         }
+        case "UPDATE_FILTER_PRICE_RANGE": {
+            state = {...state, priceRange:action.payload};
+            return state;
+        }
         case "CLEAR_FILTER": {
             state = {colours:[], types:[], events:[]};
             return state;

@@ -7,7 +7,8 @@ export function compareArrays(flower, filter) {
     return false;
 }
 
-// Returns a sorted list
+// Itterates all flowers
+//
 export function sortList(list, filter){
     var sortedList = [];
     list.map(function(flower){
@@ -29,6 +30,16 @@ export function filterFlower(flower, filter) {
                 shouldReturn = false
             }
         }
+    }
+    // Check if price range
+    if (filter.priceRange) {
+        let minVal = filter.priceRange[0];
+        let maxVal = filter.priceRange[1];
+
+        if (flower.price < minVal || flower.price > maxVal) {
+            shouldReturn = false;
+        }
+
     }
     return shouldReturn;
 }

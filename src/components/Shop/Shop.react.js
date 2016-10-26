@@ -43,10 +43,10 @@ class Shop extends Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-                <Col xs={3} md={1}>
+                <Col xs={3} md={2}>
                     <LeftMenu />
                 </Col>
-                <Col xs={9} md={11}>
+                <Col xs={9} md={10}>
                     <Col xs={12} md={12}>
                         <p className="center-text">Latitude {this.props.params.latitude}, Longitude {this.props.params.longitude}</p>
                     </Col>

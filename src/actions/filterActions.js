@@ -43,6 +43,16 @@ export function updateFilterEvents(value, checked) {
         }
     }
 }
+
+export function updateFilterPriceRange(value) {
+    return function(dispatch) {
+        dispatch({
+            type: 'UPDATE_FILTER_PRICE_RANGE',
+            payload: value
+        });
+    }
+}
+
 export function clearFilter() {
     return function(dispatch) {
         dispatch({

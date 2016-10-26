@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import * as filterActions from '../../actions/filterActions';
 import Checkbox from 'material-ui/Checkbox';
 import CircularProgress from 'material-ui/CircularProgress';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
 
 class LeftMenu extends Component {
 
@@ -13,12 +16,8 @@ class LeftMenu extends Component {
 
         if (this.props.attributes.colours) {
             mappedPriceMenu = (
-                <div>
-                    <Checkbox label="0 - 199kr"/>
-                    <Checkbox label="200 - 299kr"/>
-                    <Checkbox label="300 - 399kr"/>
-                    <Checkbox label="400 - 499kr"/>
-                    <Checkbox label="500+"/>
+                <div style={{width: '150px'}}>
+                    <Slider range defaultValue={[0, 2000]} min={0} max={2000} step={10} onAfterChange={(value) => this.props.updateFilterPriceRange(value)} />
                 </div>
             );
             mappedColorMenu = Object.keys(this.props.attributes.colours).map( (colour, index) => {
@@ -70,7 +69,8 @@ function mapDispatchToProps(dispatch) {
     return {
         updateFilterColours: (value, checked) => dispatch(filterActions.updateFilterColours(value, checked)),
         updateFilterTypes: (value, checked) => dispatch(filterActions.updateFilterTypes(value, checked)),
-        updateFilterEvents: (value, checked) => dispatch(filterActions.updateFilterEvents(value, checked))
+        updateFilterEvents: (value, checked) => dispatch(filterActions.updateFilterEvents(value, checked)),
+        updateFilterPriceRange: (value) => dispatch(filterActions.updateFilterPriceRange(value))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LeftMenu);
