@@ -16,7 +16,7 @@ class LeftMenu extends Component {
 
         if (this.props.attributes.colours) {
             mappedPriceMenu = (
-                <div style={{width: '150px'}}>
+                <div style={{width:'150px', margin:'10px'}}>
                     <Slider range defaultValue={[0, 2000]} min={0} max={2000} step={10} onAfterChange={(value) => this.props.updateFilterPriceRange(value)} />
                 </div>
             );
