@@ -21,7 +21,7 @@ class Products extends Component {
 
             mappedProducts = products.map( (prod, index) => {
                 return (
-                    <Col xs={4} md={2} key={prod.productKey}>
+                    <Col xs={12} sm={6} md={3} key={prod.productKey}>
                         <Thumbnail src={prod.image} bsClass="thumbnail product" alt="flower">
                             <h4>{prod.name}</h4>
                             <p>{prod.price} kr</p>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import LeftMenu from './LeftMenu.react.js';
 import Products from './Products.react';
+import BucketInfo from './BucketInfo.react';
 
 import { connect } from 'react-redux';
 import * as bucketActions from '../../actions/bucketActions';
@@ -43,12 +44,12 @@ class Shop extends Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-                <Col xs={3} md={2}>
+                <Col xs={12} md={2}>
                     <LeftMenu />
                 </Col>
-                <Col xs={9} md={10}>
+                <Col xs={12} md={10}>
                     <Col xs={12} md={12}>
-                        <p className="center-text">Latitude {this.props.params.latitude}, Longitude {this.props.params.longitude}</p>
+                        <BucketInfo />
                     </Col>
                     <Col xs={12} md={12}>
                         <Products />

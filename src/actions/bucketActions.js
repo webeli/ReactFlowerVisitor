@@ -9,9 +9,11 @@ export function loadBucketSuccess(data) {
 }
 
 export function clearBucket() {
-    return {
-        type: 'CLEAR_BUCKET',
-        payload: {}
+    return function(dispatch) {
+        dispatch({
+            type: 'CLEAR_BUCKET',
+            payload: {}
+        });
     }
 }
 

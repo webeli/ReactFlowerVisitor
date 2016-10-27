@@ -4,7 +4,7 @@ export default function reducer(state={}, action) {
             state = {...action.payload};
             return state;
         }
-        case "CLEAR BUCKET": {
+        case "CLEAR_BUCKET": {
             state = {};
             return state;
         }
