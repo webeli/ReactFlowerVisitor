@@ -2,6 +2,7 @@
   "name": "ReactFlowerVisitor",
   "version": "0.0.1",
   "private": true,
+  "homepage": "http://earthquaker.github.io/reactflowervisitor",
   "devDependencies": {
     "react-scripts": "0.6.1"
   },
