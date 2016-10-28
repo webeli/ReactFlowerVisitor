@@ -14,7 +14,7 @@ class App extends Component {
     return (
         <Router history={history}>
           <Route path='/' component={Start} />
-          <Route path='shop/:latitude/:longitude' component={Shop} />
+          <Route path='shop/:latitude/:longitude/:label' component={Shop} />
         </Router>
     );
   }

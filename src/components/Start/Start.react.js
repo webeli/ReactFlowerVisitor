@@ -22,7 +22,8 @@ class Start extends Component {
     }
 
     onSuggestSelect(suggest) {
-        browserHistory.push(`/shop/${suggest.location.lat}/${suggest.location.lng}`);
+        console.log(suggest);
+        browserHistory.push(`/shop/${suggest.location.lat}/${suggest.location.lng}/${suggest.label}`);
     }
 
     render() {

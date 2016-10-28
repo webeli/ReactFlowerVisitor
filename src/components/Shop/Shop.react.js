@@ -49,7 +49,7 @@ class Shop extends Component {
                 </Col>
                 <Col xs={12} md={10}>
                     <Col xs={12} md={12}>
-                        <BucketInfo />
+                        <BucketInfo location={this.props.routeParams.label}/>
                     </Col>
                     <Col xs={12} md={12}>
                         <Products />

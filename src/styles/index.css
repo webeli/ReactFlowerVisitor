@@ -23,3 +23,7 @@ h5 {
 label {
   margin-bottom:0px!important;
 }
+.well.nobg {
+  background-image:none!important;
+  background:#FFF;
+}

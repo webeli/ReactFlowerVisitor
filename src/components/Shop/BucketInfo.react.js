@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Col } from 'react-bootstrap';
+import { Col, Well } from 'react-bootstrap';
 
 class BucketInfo extends Component {
 
@@ -10,7 +10,12 @@ class BucketInfo extends Component {
 
         return (
             <Col xs={12} md={12}>
-                <p>Hittade {floristLength} florist(er), {productLength} produkt(er) och 0 kategori(er) totalt</p>
+                <center>
+                    <Well className="nobg">
+                        <h4>{this.props.location}</h4>
+                        <p>{floristLength} florist(er) och {productLength} produkt(er) totalt</p>
+                    </Well>
+                </center>
             </Col>
         );
     }
