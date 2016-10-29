@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as filterActions from '../../actions/filterActions';
 import Checkbox from 'material-ui/Checkbox';
 import CircularProgress from 'material-ui/CircularProgress';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
@@ -12,13 +13,37 @@ class LeftMenu extends Component {
 
     render() {
 
-        let mappedPriceMenu, mappedColorMenu, mappedTypeMenu, mappedEventMenu;
+        let mappedPriceMenu, mappedSortMenu, mappedColorMenu, mappedTypeMenu, mappedEventMenu;
 
         if (this.props.attributes.colours) {
             mappedPriceMenu = (
                 <div style={{width:'150px', margin:'10px'}}>
                     <Slider range defaultValue={[0, 2000]} min={0} max={2000} step={10} onAfterChange={(value) => this.props.updateFilterPriceRange(value)} />
                 </div>
+            );
+            mappedSortMenu = (
+                <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+                    <RadioButton
+                        value="A-Ö"
+                        label="A-Ö"
+                        style={{ marginBottom: 0}}
+                    />
+                    <RadioButton
+                        value="Ö-A"
+                        label="Ö-A"
+                        style={{ marginBottom: 0}}
+                    />
+                    <RadioButton
+                        value="Högsta pris"
+                        label="Högsta pris"
+                        style={{ marginBottom: 0}}
+                    />
+                    <RadioButton
+                        value="Lägsta pris"
+                        label="Lägsta pris"
+                        style={{ marginBottom: 0}}
+                    />
+                </RadioButtonGroup>
             );
             mappedColorMenu = Object.keys(this.props.attributes.colours).map( (colour, index) => {
                 return ( <Checkbox key={index} label={colour} onCheck={(e, checked)=>this.props.updateFilterColours(colour, checked)}/> )
@@ -31,6 +56,9 @@ class LeftMenu extends Component {
             });
         } else {
             mappedPriceMenu = (
+                <CircularProgress style={{marginTop:'10px'}}/>
+            );
+            mappedSortMenu = (
                 <CircularProgress style={{marginTop:'10px'}}/>
             );
             mappedColorMenu = (
@@ -46,6 +74,8 @@ class LeftMenu extends Component {
 
         return (
             <div style={{fontSize:'11px'}}>
+                <h5 style={{fontSize:'11px', marginLeft:'3px', fontWeight:'bold'}}>Sortera</h5>
+                {mappedSortMenu}
                 <h5 style={{fontSize:'11px', marginLeft:'3px', fontWeight:'bold'}}>Pris</h5>
                 {mappedPriceMenu}
                 <h5 style={{fontSize:'11px', marginLeft:'3px', fontWeight:'bold'}}>Typ</h5>
