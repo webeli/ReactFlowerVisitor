@@ -22,25 +22,25 @@ class LeftMenu extends Component {
                 </div>
             );
             mappedSortMenu = (
-                <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+                <RadioButtonGroup name="shipSpeed" defaultSelected="not_light" onChange={(e, value)=> this.props.updateSort(value)}>
                     <RadioButton
-                        value="A-Ö"
+                        value="name"
                         label="A-Ö"
                         style={{ marginBottom: 0}}
                     />
                     <RadioButton
-                        value="Ö-A"
+                        value="-name"
                         label="Ö-A"
                         style={{ marginBottom: 0}}
                     />
                     <RadioButton
-                        value="Högsta pris"
-                        label="Högsta pris"
+                        value="price"
+                        label="Lägsta pris"
                         style={{ marginBottom: 0}}
                     />
                     <RadioButton
-                        value="Lägsta pris"
-                        label="Lägsta pris"
+                        value="-price"
+                        label="Högsta pris"
                         style={{ marginBottom: 0}}
                     />
                 </RadioButtonGroup>
@@ -100,7 +100,8 @@ function mapDispatchToProps(dispatch) {
         updateFilterColours: (value, checked) => dispatch(filterActions.updateFilterColours(value, checked)),
         updateFilterTypes: (value, checked) => dispatch(filterActions.updateFilterTypes(value, checked)),
         updateFilterEvents: (value, checked) => dispatch(filterActions.updateFilterEvents(value, checked)),
-        updateFilterPriceRange: (value) => dispatch(filterActions.updateFilterPriceRange(value))
+        updateFilterPriceRange: (value) => dispatch(filterActions.updateFilterPriceRange(value)),
+        updateSort: (value) => dispatch(filterActions.updateSort(value))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LeftMenu);

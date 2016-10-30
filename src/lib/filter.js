@@ -9,7 +9,7 @@ export function compareArrays(flower, filter) {
 
 // Itterates all flowers
 //
-export function sortList(list, filter){
+export function filterList(list, filter){
     var sortedList = [];
     list.map(function(flower){
         if (filterFlower(flower, filter)) {
@@ -42,4 +42,16 @@ export function filterFlower(flower, filter) {
 
     }
     return shouldReturn;
+}
+
+export function sortBy(field, reverse, primer){
+    var key = primer ?
+        function(x) {return primer(x[field])} :
+        function(x) {return x[field]};
+
+    reverse = !reverse ? 1 : -1;
+
+    return function (a, b) {
+        return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+    }
 }

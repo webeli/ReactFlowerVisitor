@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Col, Thumbnail, Button } from 'react-bootstrap';
 import CircularProgress from 'material-ui/CircularProgress';
 
-import { sortList } from '../../lib/filter';
+import { filterList, sortBy } from '../../lib/filter';
 
 class Products extends Component {
 
@@ -13,11 +13,11 @@ class Products extends Component {
         let mappedProducts;
 
         if (this.props.products.length > 0) {
-            // Run sortList on products
-            const filteredProducts = sortList(this.props.products, this.props.filter);
-            //filterbyprice
-            const products = filteredProducts.sort();
-            //const productsLimited = products.slice(0,5);
+            // Run filterList on productArray
+            const filteredProducts = filterList(this.props.products, this.props.filter);
+            // Run sortList on filtered products array
+            console.log(this.props.filter.sortBy);
+            const products = filteredProducts.sort(sortBy(this.props.filter.sortBy, false, parseInt));
 
             mappedProducts = products.map( (prod, index) => {
                 return (
@@ -51,6 +51,7 @@ class Products extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
         products: state.products,
         filter: state.filter

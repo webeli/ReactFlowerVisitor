@@ -28,6 +28,10 @@ export default function reducer(state={colours:[], types:[], events:[]}, action)
             state = {...state, priceRange:action.payload};
             return state;
         }
+        case "UPDATE_SORT_BY": {
+            state = {...state, sortBy:action.payload};
+            return state;
+        }
         case "CLEAR_FILTER": {
             state = {colours:[], types:[], events:[]};
             return state;

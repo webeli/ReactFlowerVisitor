@@ -13,6 +13,14 @@ export function updateFilterColours(value, checked) {
         }
     }
 }
+export function updateSort(value) {
+    return function(dispatch) {
+        dispatch({
+            type: 'UPDATE_SORT_BY',
+            payload: value
+        });
+    }
+}
 export function updateFilterTypes(value, checked) {
     return function(dispatch) {
         if (checked) {
