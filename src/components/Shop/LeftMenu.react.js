@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { } from 'react-bootstrap';
+import { Well } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import * as filterActions from '../../actions/filterActions';
 import Checkbox from 'material-ui/Checkbox';
@@ -73,7 +73,7 @@ class LeftMenu extends Component {
         }
 
         return (
-            <div style={{fontSize:'11px'}}>
+            <Well className="nobg" style={{fontSize:'11px'}}>
                 <h5 style={{fontSize:'11px', marginLeft:'3px', fontWeight:'bold'}}>Sortera</h5>
                 {mappedSortMenu}
                 <h5 style={{fontSize:'11px', marginLeft:'3px', fontWeight:'bold'}}>Pris</h5>
@@ -84,7 +84,7 @@ class LeftMenu extends Component {
                 {mappedEventMenu}
                 <h5 style={{fontSize:'11px', marginLeft:'3px', fontWeight:'bold'}}>Färg</h5>
                 {mappedColorMenu}
-            </div>
+            </Well>
         );
     }
 }
